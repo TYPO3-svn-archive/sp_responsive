@@ -1,0 +1,43 @@
+# ======================================================================
+# Responsive Content Elements
+# ======================================================================
+plugin.tx_spresponsive.settings {
+	imageslider {
+		# cat=Responsive Configuration/settings/1000; type=string; label=Imageslider animation
+		animation = fade
+
+		# cat=Responsive Configuration/settings/1010; type=string; label=Imageslider animation duration
+		animationDuration = 500
+
+		# cat=Responsive Configuration/settings/1020; type=string; label=Imageslider show navigation
+		controlNav = 0
+
+		# cat=Responsive Configuration/settings/1030; type=string; label=Imageslider slideshow speed
+		slideshowSpeed = 7000
+	}
+
+	carousel {
+		# cat=Responsive Configuration/settings/2000; type=string; label=Carousel animation duration
+		animationDuration = 300
+
+		# cat=Responsive Configuration/settings/2010; type=string; label=Carousel margin size
+		marginSize = 24
+
+		# cat=Responsive Configuration/settings/2020; type=string; label=Carousel border size
+		borderSize = 0
+	}
+
+	libraries {
+			# cat=Responsive Configuration/settings/3000; type=boolean; label=Load jQuery: Load jQuery library
+		jquery = 1
+
+			# cat=Responsive Configuration/settings/3010; type=boolean; label=Load Flexslider: Load Flexslider library
+		flexslider = 1
+
+			# cat=Responsive Configuration/settings/3020; type=boolean; label=Load Elastislide: Load Elastislide library
+		elastislide = 1
+
+			# cat=Responsive Configuration/settings/3030; type=boolean; label=Load Fittext: Load Fittext library
+		fittext = 1
+	}
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the sp_responsive extension</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.tx_spresponsive_controls">Show controls</label>
+			<label index="tt_content.tx_spresponsive_autoplay">Autoplay</label>
+			<label index="tt_content.tx_spresponsive_items">Image count</label>
+			<label index="tt_content.tx_spresponsive_scalable">Scalable</label>
+			<label index="tt_content.tx_spresponsive_fittext">Scalable</label>
+			<label index="tt_content.tx_spresponsive_fitlevel">Level</label>
+			<label index="tx_spresponsive_imageslider.title">Image Slider</label>
+			<label index="tx_spresponsive_imageslider.description">Adds an image slider content element to current page.</label>
+			<label index="tx_spresponsive_carousel.title">Image Carousel</label>
+			<label index="tx_spresponsive_carousel.description">Adds an image carousel content element to current page.</label>
+			<label index="palette.image_settings_slider">Slider settings</label>
+			<label index="palette.image_settings_carousel">Carousel settings</label>
+			<label index="enabled">Enabled</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tt_content.tx_spresponsive_controls">Zeige Navigation</label>
+			<label index="tt_content.tx_spresponsive_autoplay">Automatisch wechseln</label>
+			<label index="tt_content.tx_spresponsive_items">Anzahl Bilder</label>
+			<label index="tt_content.tx_spresponsive_scalable">Skalierbar</label>
+			<label index="tt_content.tx_spresponsive_fittext">Skalierbar</label>
+			<label index="tt_content.tx_spresponsive_fitlevel">Niveau</label>
+			<label index="tx_spresponsive_imageslider.title">Bilder-Slideshow</label>
+			<label index="tx_spresponsive_imageslider.description">Fügt der aktuellen Seite eine Bilder-Slideshow hinzu.</label>
+			<label index="tx_spresponsive_carousel.title">Bilder-Karussell</label>
+			<label index="tx_spresponsive_carousel.description">Fügt der aktuellen Seite ein Bilder-Karussell hinzu.</label>
+			<label index="palette.image_settings_slider">Slider-Einstellungen</label>
+			<label index="palette.image_settings_carousel">Karussell-Einstellungen</label>
+			<label index="enabled">Aktiviert</label>
+		</languageKey>
+	</data>
+</T3locallang>

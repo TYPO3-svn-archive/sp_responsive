@@ -1,0 +1,239 @@
+# ======================================================================
+# Image slider
+# http://www.woothemes.com/flexslider
+# ======================================================================
+tt_content.tx_spresponsive_imageslider < tt_content.textpic
+tt_content.tx_spresponsive_imageslider {
+	## Images
+	20 {
+		addClasses >
+		addClassesImage >
+		imageStdWrap.dataWrap = <div class="csc-textpic-imagewrap flexslider" id="flexslider-{field:uid}" style="max-width:{register:totalwidth}px;"><ul class="slides">|</ul></div>
+		imageStdWrapNoWidth.wrap = <div class="csc-textpic-imagewrap flexslider" id="flexslider-{field:uid}" style="max-width:{register:totalwidth}px;"><ul class="slides">|</ul></div>
+		imageColumnStdWrap.dataWrap = |
+
+		rendering {
+			tx_spresponsive_imageslider = COA
+			tx_spresponsive_imageslider {
+				imageRowStdWrap.dataWrap = |
+				imageLastRowStdWrap.dataWrap = |
+				noRowsStdWrap.wrap = |
+				oneImageStdWrap.dataWrap = <li style="display:none;">|</li>
+				caption {
+					required = 1
+					wrap = |
+				}
+			}
+		}
+
+		renderMethod = tx_spresponsive_imageslider
+	}
+
+	## JavaScript
+	30 = COA
+	30 {
+		10 = TEXT
+		10 {
+			value = spResponsiveSetup[{field:uid}] =
+			insertData = 1
+		}
+		15 = TEXT
+		15.value = {
+		20 = TEXT
+		20 {
+			value (
+				animation: "{$plugin.tx_spresponsive.settings.imageslider.animation}",
+				animationDuration: {$plugin.tx_spresponsive.settings.imageslider.animationDuration},
+				controlNav: Boolean({$plugin.tx_spresponsive.settings.imageslider.controlNav}),
+				slideshowSpeed: {$plugin.tx_spresponsive.settings.imageslider.slideshowSpeed},
+				slideshow: Boolean({field:tx_spresponsive_autoplay}),
+				directionNav: Boolean({field:tx_spresponsive_controls})
+			)
+			insertData = 1
+		}
+		25 = TEXT
+		25.value = };
+
+		stdWrap.wrap = <script type="text/javascript">|</script>
+	}
+}
+
+
+# ======================================================================
+# Image carousel
+# http://tympanus.net/codrops/2011/09/12/elastislide-responsive-carousel
+# ======================================================================
+tt_content.tx_spresponsive_carousel < tt_content.textpic
+tt_content.tx_spresponsive_carousel {
+	## Images
+	20 {
+		addClasses >
+		addClassesImage >
+		imageStdWrap.dataWrap.cObject = COA
+		imageStdWrap.dataWrap.cObject {
+			10 = LOAD_REGISTER
+			10 {
+				calcWidth = TEXT
+				calcWidth {
+					stdWrap.dataWrap = (({field:imagewidth} + {$plugin.tx_spresponsive.settings.carousel.marginSize} + (2 * {$plugin.tx_spresponsive.settings.carousel.borderSize})) * {field:tx_spresponsive_items}) - {$plugin.tx_spresponsive.settings.carousel.marginSize} - {$plugin.tx_spresponsive.settings.carousel.borderSize}
+					prioriCalc = 1
+				}
+
+				carouselWidth = TEXT
+				carouselWidth {
+					data = register : calcWidth
+					override = 960
+					override.if {
+						value = 960
+						isGreaterThan.data = register : calcWidth
+					}
+				}
+			}
+			20 = TEXT
+			20.dataWrap = <div class="csc-textpic-imagewrap es-carousel-wrapper" id="carousel-{field:uid}" style="width:{register:carouselWidth}px;"><div class="es-carousel"><ul>
+			30 = TEXT
+			30.value = |</ul></div></div>
+		}
+		imageStdWrapNoWidth < .imageStdWrap
+		imageColumnStdWrap.dataWrap = |
+
+		rendering {
+			tx_spresponsive_carousel = COA
+			tx_spresponsive_carousel {
+				imageRowStdWrap.dataWrap = |
+				imageLastRowStdWrap.dataWrap = |
+				noRowsStdWrap.wrap = |
+				oneImageStdWrap.dataWrap = <li>|</li>
+				caption {
+					required = 1
+					wrap = |
+				}
+			}
+		}
+
+		renderMethod = tx_spresponsive_carousel
+	}
+
+	## JavaScript
+	30 = COA
+	30 {
+		10 = TEXT
+		10 {
+			value = spResponsiveSetup[{field:uid}] =
+			insertData = 1
+		}
+		15 = TEXT
+		15.value = {
+		20 = TEXT
+		20 {
+			value (
+				speed: {$plugin.tx_spresponsive.settings.carousel.animationDuration},
+				margin: {$plugin.tx_spresponsive.settings.carousel.marginSize},
+				border: {$plugin.tx_spresponsive.settings.carousel.borderSize},
+				minItems: {field:tx_spresponsive_items},
+				imageW: {field:imagewidth}
+			)
+			insertData = 1
+		}
+		25 = TEXT
+		25.value = };
+
+		stdWrap.wrap = <script type="text/javascript">|</script>
+	}
+}
+
+
+# ======================================================================
+# Scalable Images
+# ======================================================================
+tt_content.image.20 {
+	addClasses.append = TEXT
+	addClasses.append {
+		value = csc-textpic-scalable
+		noTrimWrap = | ||
+		if.isTrue.field = tx_spresponsive_scalable
+	}
+}
+
+
+# ======================================================================
+# Scalable Headlines
+# ======================================================================
+lib.stdheader {
+	3 {
+		headerClass.cObject.30 = TEXT
+		headerClass.cObject.30 {
+			value = fittext
+			if.isTrue.field = tx_spresponsive_fittext
+			noTrimWrap = | ||
+		}
+		fitlevel {
+			field = tx_spresponsive_fitlevel
+			noTrimWrap = | data-fittext-level="|"|
+			required = 1
+		}
+	}
+
+	10 {
+		1.dataWrap = <h1{register:headerStyle}{register:headerClass}{register:fitlevel}>|</h1>
+		2.dataWrap = <h2{register:headerStyle}{register:headerClass}{register:fitlevel}>|</h2>
+		3.dataWrap = <h3{register:headerStyle}{register:headerClass}{register:fitlevel}>|</h3>
+		4.dataWrap = <h4{register:headerStyle}{register:headerClass}{register:fitlevel}>|</h4>
+		5.dataWrap = <h5{register:headerStyle}{register:headerClass}{register:fitlevel}>|</h5>
+	}
+}
+
+
+# ======================================================================
+# Page Configuration
+# ======================================================================
+
+## Include jQuery library
+[globalVar = LIT:1 = {$plugin.tx_spresponsive.settings.libraries.jquery}]
+  page.includeJSlibs.jquery = EXT:sp_responsive/Resources/Public/Contrib/jQuery/jquery-1.7.2.min.js
+  page.includeJSlibs.jquery {
+		disableCompression = 1
+		forceOnTop = 1
+	}
+[global]
+
+## Include flexslider library
+[globalVar = LIT:1 = {$plugin.tx_spresponsive.settings.libraries.flexslider}]
+  page {
+		includeCSS.flexslider = EXT:sp_responsive/Resources/Public/Contrib/Flexslider/flexslider.css
+		includeJSlibs.flexslider = EXT:sp_responsive/Resources/Public/Contrib/Flexslider/jquery.flexslider.js
+  }
+[global]
+
+## Include elastislide library
+[globalVar = LIT:1 = {$plugin.tx_spresponsive.settings.libraries.elastislide}]
+  page {
+		includeCSS.elastislide = EXT:sp_responsive/Resources/Public/Contrib/Elastislide/elastislide.css
+		includeJSlibs {
+			jQueryEasing = EXT:sp_responsive/Resources/Public/Contrib/Elastislide/jquery.easing.1.3.js
+			elastislide = EXT:sp_responsive/Resources/Public/Contrib/Elastislide/jquery.elastislide.js
+		}
+  }
+[global]
+
+## Include fittext library
+[globalVar = LIT:1 = {$plugin.tx_spresponsive.settings.libraries.fittext}]
+  page.includeJSlibs.fittext = EXT:sp_responsive/Resources/Public/Contrib/Fittext/jquery.fittext.js
+[global]
+
+page {
+	## Stylesheet files
+	includeCSS {
+		tx_spresponsive = EXT:sp_responsive/Resources/Public/Stylesheet/Default.css
+	}
+
+	## Javascript files (loaded after "includeJSlibs")
+	includeJS {
+		tx_spresponsive = EXT:sp_responsive/Resources/Public/Javascript/Default.js
+	}
+
+	jsInline {
+		10 = TEXT
+		10.value = var spResponsiveSetup = [];
+	}
+}
